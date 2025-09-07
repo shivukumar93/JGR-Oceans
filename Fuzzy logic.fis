@@ -1,0 +1,98 @@
+[System]
+Name='Fuzzy logic'
+Type='mamdani'
+Version=2.0
+NumInputs=9
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='T1_Storms_&_Flooding'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-1 0 1]
+MF2='mf2':'trimf',[0 1 1]
+
+[Input2]
+Name='T2_Climate_change_&_Severe_weather'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+
+[Input3]
+Name='T3_Dams_&_Water_management/use'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+
+[Input4]
+Name='T4_Drainage'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+
+[Input5]
+Name='V1_Human_settlements'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+
+[Input6]
+Name='V2_Agriculture_&_Aquaculture'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+
+[Input7]
+Name='V3_Transportation_&_Service_corridors'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+
+[Input8]
+Name='V4_Roads_&_Railroads'
+Range=[0 1]
+NumMFs=2
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+
+[Input9]
+Name='E_Extreme_Precipitation'
+Range=[0 300]
+NumMFs=3
+MF1='LOW':'trimf',[-125 0 75]
+MF2='MEDIUM':'trimf',[75 150 200]
+MF3='HIGH':'trimf',[200 300 425]
+
+[Output1]
+Name='Risk=Threats(T)*Vulnerabilities(V)*Precipitation(E)'
+Range=[0 100]
+NumMFs=3
+MF1='LOW':'trimf',[-41.67 0 41.67]
+MF2='MEDIUM':'trimf',[8.333 50 91.67]
+MF3='HIGH':'trimf',[58.33 100 141.7]
+
+[Rules]
+1 1 1 1 1 1 1 1 1, 1 (1) : 1
+1 1 1 1 1 1 1 1 2, 2 (1) : 1
+1 1 1 1 1 1 1 1 3, 3 (1) : 1
+1 1 1 1 1 1 1 2 3, 3 (1) : 1
+1 1 1 1 1 1 1 2 1, 3 (1) : 1
+1 1 1 1 1 1 1 2 2, 3 (1) : 1
+1 1 1 1 1 1 2 2 2, 2 (1) : 1
+1 1 1 1 1 1 2 2 1, 2 (1) : 1
+1 1 1 1 1 1 2 2 3, 2 (1) : 1
+1 1 1 2 1 1 2 2 3, 2 (1) : 1
+1 1 2 2 1 1 2 2 3, 2 (1) : 1
+2 1 2 2 1 1 2 2 3, 2 (1) : 1
